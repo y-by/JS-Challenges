@@ -12,6 +12,8 @@ For example, typing :smile: will replace that text with 😊
 */
 
 const emojis = {
+  "night": "🌙",
+  "barf": "🤮",
   "smile": "😊",
   "angry": "😠",
   "party": "🎉",
@@ -45,10 +47,10 @@ function emojifyWord(word){
     const slice = word.slice(1, -1)
     // exists in emoji object? 
     if (emojis[slice]) {
+      // yes: return emoji 
       return emojis[slice]
+      // no: return the word
     } return slice
-        // yes: return emoji 
-        // no: return the word
 }
 
 /* 2. Write a function to find any emoji shortcodes in a phrase.
@@ -67,11 +69,8 @@ function emojifyPhrase(phrase){
   const phraseWords = phrase.split(' ')
   const withEmojis = phraseWords.map(word => emojifyWord(word))
   const theNewPhrase = withEmojis.join(' ')
-
   return theNewPhrase;
 }
-
-
 
 console.log(emojifyWord(":heart:"));
 console.log(emojifyWord(":flower:"));
@@ -79,3 +78,5 @@ console.log(emojifyWord("elephant"));
 
 console.log(emojifyPhrase("I :heart: my :cat:"));
 console.log(emojifyPhrase("I :heart: my :elephant:"));
+console.log(emojifyPhrase("I :heart: to :smile:"));
+console.log(emojifyPhrase("my :cat: miao my :dog: and they :party: all :night: and in the morning :barf: together"))
