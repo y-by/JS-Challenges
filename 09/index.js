@@ -13,19 +13,26 @@ Example output: true
 */
 console.log('Palindrome test')
 function isPalindrome(str){
-    let newStr = ""
-    for (let i = str.length -1; i >= 0; i-- ) {
-        newStr += str[i]
+    
+    // solution with for loop
+    // let newStr = ""
+    // for (let i = str.length -1; i >= 0; i-- ) {
+    //     newStr += str[i]
+    // }
+    // if(str === newStr) {
+    //     result = `About the string ${str} - ${true}`
+    // } else {
+    //     result = `About the string ${str} - ${false}`
+    // }
 
-    }
-    console.log(newStr)
-    if(str === newStr) {
-        result = `About the string ${str} ${true}`
-        // console.log(result)
+    // solution with array methodes
+    const reverseStrWithArray = str.split("").reverse().join("")
+    if(str === reverseStrWithArray) {
+        result = `About the string ${str} - ${true}`
     } else {
-        result = result = `About the string ${str} ${false}`
-        // console.log(result)
+        result = `About the string ${str} - ${false}`
     }
+
     return result
 
 }
