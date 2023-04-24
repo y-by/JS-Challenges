@@ -15,12 +15,21 @@ lowercase t and a capital T should be considered the same character).
 */ 
 
 function countChars(str){
+   // initialize a new empty object to hold the letter counte    
    const letterCounts = {}
+   // remove all spaces and lowercase all characters of the input str
+   const cleanStr = str.toLowerCase().split(" ").join("")
+   // loop through the letters of the string
    for (let i = 0; i < str.length; i++) {
-    const letter = str[i];
-    if (letter in letterCounts) {
-        letterCounts[letter]++
-    } else { letterCounts[letter] = 1 }
+    console.log(cleanStr)
+    const letter = cleanStr[i];
+   // if the character is not the obj, add it, give it a value of 1
+    if (!letterCounts[letter]) {
+        letterCounts[letter] = 1
+    } else {
+   // if the character is already in the object, increment that char's value
+        letterCounts[letter] += 1 
+    }
    }
    return letterCounts
 }
