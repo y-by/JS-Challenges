@@ -26,16 +26,14 @@ Read about toDateString() for info on formatting a readable date.
 */
 function transformData(data){
     // use map to loop through the data
-    return data.map(person => {
+    return data.map(({name, dob}) => {
         // concat the first and last name
-        const full = `${person.name.first} ${person.name.last}`
         // create a new date object, passing in the dob(Date Of Birth)
         // format by calling toDateString() method
-        const personDob = new Date(person.dob.date).toDateString()
         // return an object with the two new properties
         return {
-            fullName: full,
-            birthday: personDob
+            fullName: `${name.first} ${name.last}`,
+            birthday: new Date(dob.date).toDateString()
         }
     })
 }
