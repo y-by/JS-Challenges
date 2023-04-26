@@ -18,5 +18,17 @@ import products from "./data.js";
 */
 
 function getSaleItems(data){
-    
+    // filter the data by product.type -- only sweet
+    return data
+        .filter(product => product.type === "sweet")
+        // loop through the data using map 
+        .map(({item, price}) => {
+            // for every candy, return a new object with only item and price
+            return {
+                item,
+                price
+            }
+        })
 };
+const shoppingCart = getSaleItems(products)
+console.log(shoppingCart)
