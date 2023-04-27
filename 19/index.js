@@ -8,14 +8,20 @@ Example output: 73.44
 */
 
 function total(arr){
-    // console.log(arr)
-    const numbersArray = []
-    arr.map(({price}) => numbersArray.push(price))
-    const output = 0
-    const sumAll = numbersArray.reduce (
-        (a, b) => a + b, output
-    )
-    return `The output is: ${sumAll.toFixed(2)}`
+    // // first option
+    // const numbersArray = []
+    // arr.map(({price}) => numbersArray.push(price))
+    // const sumAll = numbersArray.reduce ((acc, curr) => {
+    //     return acc + curr
+    // }, 0)
+    // console.log(numbersArray)
+    // return `The output is: ${sumAll.toFixed(2)}`
+
+    // second option
+    const total = arr.reduce((acc, curr) => {
+        return acc + curr.price
+    }, 0)
+    return total.toFixed(2)
 }
 
 console.log(total(shoppingCart));
