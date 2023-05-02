@@ -26,12 +26,18 @@ each podcast to the console, like this:
 
 function sortByDuration(data, flightLength){
     const podcastList = []
-    data.forEach(podcast => {
-        console.log(`${podcast.title}, ${podcast.duration} minutes`)
+    for(let i = 1; i < data.length; i++) {
+        console.log(`${i}. ${data[i].title}, ${data[i].duration} minutes`)
         if(flightLength < 60) {
-            podcastList.push(`${podcast.title} ${podcast.duration}`)
-        }
-    });
+            podcastList.push(`${i}. ${data[i].title} ${data[i].duration} minutes`)
+        } 
+    }
+    // data.forEach(podcast => {
+    //     console.log(`${podcast.title}, ${podcast.duration} minutes`)
+    //     if(flightLength < 60) {
+    //         podcastList.push(`${podcast.title} ${podcast.duration}`)
+    //     }
+    // });
     console.log(podcastList)
 
     console.log(data, flightLength)
