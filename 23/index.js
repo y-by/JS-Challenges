@@ -24,23 +24,45 @@ each podcast to the console, like this:
 
 */
 
-function sortByDuration(data, flightLength){
-    const podcastList = []
-    for(let i = 1; i < data.length; i++) {
-        console.log(`${i}. ${data[i].title}, ${data[i].duration} minutes`)
-        if(flightLength < 60) {
-            podcastList.push(`${i}. ${data[i].title} ${data[i].duration} minutes`)
-        } 
-    }
-    // data.forEach(podcast => {
-    //     console.log(`${podcast.title}, ${podcast.duration} minutes`)
-    //     if(flightLength < 60) {
-    //         podcastList.push(`${podcast.title} ${podcast.duration}`)
-    //     }
-    // });
-    console.log(podcastList)
+// function sortByDuration(data, flightLength){
+//     const podcastList = []
+//     for(let i = 1; i < data.length; i++) {
+//         if(flightLength < 60) {
+//             podcastList.push(`${i}. ${data[i].title} ${data[i].duration} minutes`)
+//         } 
+//     }
+//     console.log(podcastList.sort(comperFunction))
 
-    console.log(data, flightLength)
+//     function comperFunction(a, b) {
+//         return a - b
+//     }
+//     // data.forEach(podcast => {
+//     //     console.log(`${podcast.title}, ${podcast.duration} minutes`)
+//     //     if(flightLength < 60) {
+//     //         podcastList.push(`${podcast.title} ${podcast.duration}`)
+//     //     }
+//     // });
+
+//     // console.log(data, flightLength)
+// }
+
+function sortByDuration(data, flightLength){
+    const podcastList = {}
+    if(flightLength >= 60) {
+        for (let i = 1; i < data.length; i++) {
+            const podcast = data[i];
+            // console.log(`${i}.${podcast.title}, ${podcast.duration} minutes`)
+        }
+        console.log(">=60")
+        console.log(data.sort((a,b) => a.duration - b.duration))
+    } else {
+        for (let i = 1; i < data.length; i++) {
+            const podcast = data[i];
+            // console.log(`${i}.${podcast.title}, ${podcast.duration} minutes`)
+        }
+        console.log("<60")
+        console.log(data.sort((a,b) => b.duration - a.duration))
+    }
 }
 
-sortByDuration(podcasts, 59);
+sortByDuration(podcasts, 60);
