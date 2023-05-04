@@ -24,45 +24,24 @@ each podcast to the console, like this:
 
 */
 
-// function sortByDuration(data, flightLength){
-//     const podcastList = []
-//     for(let i = 1; i < data.length; i++) {
-//         if(flightLength < 60) {
-//             podcastList.push(`${i}. ${data[i].title} ${data[i].duration} minutes`)
-//         } 
-//     }
-//     console.log(podcastList.sort(comperFunction))
-
-//     function comperFunction(a, b) {
-//         return a - b
-//     }
-//     // data.forEach(podcast => {
-//     //     console.log(`${podcast.title}, ${podcast.duration} minutes`)
-//     //     if(flightLength < 60) {
-//     //         podcastList.push(`${podcast.title} ${podcast.duration}`)
-//     //     }
-//     // });
-
-//     // console.log(data, flightLength)
-// }
-
 function sortByDuration(data, flightLength){
     const podcastList = {}
+    // Check if flight is greater than 60 minutes
     if(flightLength >= 60) {
-        for (let i = 1; i < data.length; i++) {
-            const podcast = data[i];
-            // console.log(`${i}.${podcast.title}, ${podcast.duration} minutes`)
-        }
+        // if yes, sort decending order (longest to shortest)
         console.log(">=60")
-        console.log(data.sort((a,b) => a.duration - b.duration))
+        data.sort((a,b) => b.duration - a.duration)
     } else {
-        for (let i = 1; i < data.length; i++) {
-            const podcast = data[i];
-            // console.log(`${i}.${podcast.title}, ${podcast.duration} minutes`)
-        }
         console.log("<60")
-        console.log(data.sort((a,b) => b.duration - a.duration))
+        data.sort((a,b) => a.duration - b.duration)
     }
+    // loop through my sorted array
+    data.forEach(({title, duration}, index) => {
+        // construct a string using title and duration props
+        // use the index to number the list
+        // console.log each item
+        console.log(`${index +1}. ${title}, ${duration} minutes`)
+    });
 }
 
-sortByDuration(podcasts, 60);
+sortByDuration(podcasts, 57);
