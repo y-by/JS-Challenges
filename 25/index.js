@@ -17,20 +17,27 @@ Example output: ["🏆 Alex Booker", "⭐ Bob Smith", "💎 Camilla Lambert" ...
 */ 
 const awards = ["🏆", "⭐", "💎", "🥇", "👑"];
 
-function getHosts(data){
-    const flatArray = []
-    data.forEach(item => {
-        console.log(item.hosts)
-        flatArray.push(item.hosts)
-    });
-    const reallyFlatArray = flatArray.flat()
-    console.log(reallyFlatArray)
+function getHosts(data) {
+    return data.reduce((acc, curr) => {
+        return acc.concat(curr.hosts)
+    }, [])
 }
 
 function assignAwards(data){
+    // use getHosts() to get a flat array of podcasts hosts
+    const result = getHosts(data)
+    
+    // map through my array of hosts. for each:
+    const resultArray = []
+    result.map(item => {
+        // use Math.random to generate a rand num between 0 and length of award arr
+        const randomNumber = Math.floor(Math.random() * awards.length)
+        // use the rand num to access a random award index
+        // use string literal to concast a random award to each host 
+        resultArray.push(`${awards[randomNumber]} ${item}`)
+    })
+    return resultArray
     
 }
-
-
 console.log(getHosts(podcasts));
 console.log(assignAwards(podcasts));
